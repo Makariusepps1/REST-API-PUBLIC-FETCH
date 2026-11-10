@@ -1,0 +1,5 @@
+For this assignment I built a Python script that fetches public car part data from the NHTSA API and shows only the items in the 'Active Safety System' group. The steps were simple once I saw the shape of the data: send a GET request, check the response actually succeeded, parse the JSON, then filter the Results list and print each item's name and ID.
+
+What surprised me was how much of the work was handling what could go wrong. A request can fail, a server can return an error status, and the body might not be valid JSON, so the script checks each of those before trusting the data. I also had to be careful with the filter: the API has sub-groups like 'Active Safety System/Lane and Side Assist', so only an exact match gives the right 11 items instead of 30.
+
+My code started as one idea — get the data and print it — and grew into three small pieces: fetch, filter, and display, each doing one job. I understand the request-response cycle better now, especially why you check the status before parsing. Next I want to learn async properly — how aiohttp compares to the requests call I used here.
